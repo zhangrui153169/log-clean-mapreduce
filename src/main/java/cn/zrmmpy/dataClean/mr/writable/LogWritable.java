@@ -2,37 +2,24 @@ package cn.zrmmpy.dataClean.mr.writable;
 
 import java.util.Date;
 
-public class MusicWritable {
-    private String songid;//歌曲编号
-    private String songname;//歌曲名字
-    private Date releasedate;//出版时间
-    private String singer;//歌曲作者
-    private String picture;//歌曲图片
-    private String averating;//歌曲评分
-    private String description;//歌曲短评
-    private String categoryid;//分类编号
-    private String link;//歌曲链接
-
-	public MusicWritable(String songid, String songname, Date releasedate, String singer, String picture,
-			String averating, String description, String categoryid, String link) {
+public class LogWritable {
+    private long userid;//用户编号
+    private String operation;//操作名字
+    private Date logtime;//操作时间
+    private long musicid;//歌曲id
+    private String rating;//歌曲评分
+	public LogWritable(long userid, String operation, Date logtime, long musicid, String rating) {
 		super();
-		this.songid = songid;
-		this.songname = songname;
-		this.releasedate = releasedate;
-		this.singer = singer;
-		this.picture = picture;
-		this.averating = averating;
-		this.description = description;
-		this.categoryid = categoryid;
-		this.link = link;
+		this.userid = userid;
+		this.operation = operation;
+		this.logtime = logtime;
+		this.musicid = musicid;
+		this.rating = rating;
 	}
-
 	@Override
 	public String toString() {
-		return "MusicWritable [songid=" + songid + ", songname=" + songname + ", releasedate=" + releasedate
-				+ ", singer=" + singer + ", picture=" + picture + ", averating=" + averating + ", description="
-				+ description + ", categoryid=" + categoryid + ", link=" + link + "]";
+		return "LogWritable [userid=" + userid + ", operation=" + operation + ", logtime=" + logtime + ", musicid="
+				+ musicid + ", rating=" + rating + "]";
 	}
-
 	
 }

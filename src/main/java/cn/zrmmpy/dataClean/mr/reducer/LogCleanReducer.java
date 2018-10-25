@@ -6,16 +6,16 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class MusicCleanReducer extends Reducer<NullWritable, Text, NullWritable, Text>{
+public class LogCleanReducer extends Reducer<NullWritable, Text, NullWritable, Text>{
 	@Override
 	protected void reduce(NullWritable key, Iterable<Text> values, Context context)
 			throws IOException, InterruptedException 
 	{
-		StringBuffer musics = new StringBuffer();
-		for(Text musicinfo : values){
-			musics.append(musicinfo+";");
+		StringBuffer logs = new StringBuffer();
+		for(Text loginfo : values){
+			logs.append(loginfo+";");
 		}
-		context.write(NullWritable.get() , new Text(musics.toString()));			
+		context.write(NullWritable.get() , new Text(logs.toString()));			
 	}
 
 }

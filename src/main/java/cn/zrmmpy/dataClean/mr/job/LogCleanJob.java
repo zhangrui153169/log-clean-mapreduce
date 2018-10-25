@@ -1,8 +1,8 @@
 package cn.zrmmpy.dataClean.mr.job;
 
 
-import cn.zrmmpy.dataClean.mr.mapper.MusicCleanMapper;
-import cn.zrmmpy.dataClean.mr.reducer.MusicCleanReducer;
+import cn.zrmmpy.dataClean.mr.mapper.LogCleanMapper;
+import cn.zrmmpy.dataClean.mr.reducer.LogCleanReducer;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -15,7 +15,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 /**
- * 清洗音乐信息
+ * 清洗日志信息
  * 主要的驱动程序
  *      主要用作组织mapper和reducer的运行
  *
@@ -26,7 +26,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 
  */
-public class MusicCleanJob {
+public class LogCleanJob {
     public static void main(String[] args) throws Exception {
 
         if(args == null || args.length < 2) {
@@ -37,16 +37,16 @@ public class MusicCleanJob {
         Path outputPath = new Path(args[args.length - 1]);
 
         Configuration conf = new Configuration();
-        String jobName = MusicCleanJob.class.getSimpleName();
+        String jobName = LogCleanJob.class.getSimpleName();
         Job job = Job.getInstance(conf, jobName);
-        job.setJarByClass(MusicCleanJob.class);
+        job.setJarByClass(LogCleanJob.class);
 
         // 设置mr的输入参数
         for( int i = 0; i < args.length - 1; i++) {
             FileInputFormat.addInputPath(job, new Path(args[i]));
         }
         job.setInputFormatClass(TextInputFormat.class);
-        job.setMapperClass(MusicCleanMapper.class);
+        job.setMapperClass(LogCleanMapper.class);
         job.setMapOutputKeyClass(NullWritable.class);
         job.setMapOutputValueClass(Text.class);
         // 设置mr的输出参数
@@ -54,7 +54,7 @@ public class MusicCleanJob {
         FileOutputFormat.setOutputPath(job, outputPath);
         job.setOutputFormatClass(TextOutputFormat.class);
 
-        job.setReducerClass(MusicCleanReducer.class);
+        job.setReducerClass(LogCleanReducer.class);
         job.setOutputKeyClass(NullWritable.class);
         job.setOutputValueClass(Text.class);
         job.setNumReduceTasks(1);
