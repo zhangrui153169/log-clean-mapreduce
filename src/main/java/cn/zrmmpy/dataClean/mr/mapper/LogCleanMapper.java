@@ -29,6 +29,7 @@ public class LogCleanMapper extends Mapper<LongWritable, Text, NullWritable, Tex
     @Override
     protected void setup(Context context) throws IOException, InterruptedException {
        
+    	
     }
 
 
