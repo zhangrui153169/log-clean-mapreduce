@@ -1,4 +1,4 @@
-package cn.zrmmpy.dataClean.mr.writable;
+  package cn.zrmmpy.dataClean.mr.writable;
 
 import java.util.Date;
 
