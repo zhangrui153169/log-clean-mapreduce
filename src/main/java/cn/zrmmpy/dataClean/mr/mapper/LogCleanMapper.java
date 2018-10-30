@@ -35,7 +35,7 @@ public class LogCleanMapper extends Mapper<LongWritable, Text, NullWritable, Tex
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        fields = value.toString().split("@@");
+        fields = value.toString().split("$");
         if (fields == null || fields.length<4) { // 有异常数据
             return;
         }
