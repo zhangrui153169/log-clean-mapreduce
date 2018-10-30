@@ -18,8 +18,8 @@ public class LogWritable {
 	}
 	@Override
 	public String toString() {
-		return "LogWritable [userid=" + userid + ", operation=" + operation + ", logtime=" + logtime + ", musicid="
-				+ musicid + ", rating=" + rating + "]";
+		return userid + "@@" + operation + "@@" + logtime + "@@"
+				+ musicid + "@@" + rating;
 	}
 	
 }
